@@ -19,21 +19,21 @@ public class FlightService {
 
     public FlightService() {
         flights.add(new Flight(201L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(7, 40), 36, createRandomSeats(108)));
-        flights.add(new Flight(207L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 34, createRandomSeats(108)));
-        flights.add(new Flight(223L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(7, 30), 34, createRandomSeats(108)));
-        flights.add(new Flight(223L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 32, createRandomSeats(108)));
-        flights.add(new Flight(210L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(6, 45), 30, createRandomSeats(108)));
-        flights.add(new Flight(211L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(15, 00), 28, createRandomSeats(108)));
-        flights.add(new Flight(223L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(8, 00), 42, createRandomSeats(108)));
-        flights.add(new Flight(223L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(18, 00), 40, createRandomSeats(108)));
-        flights.add(new Flight(210L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(6, 45), 30, createRandomSeats(108)));
-        flights.add(new Flight(211L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(15, 00), 28, createRandomSeats(108)));
-        flights.add(new Flight(212L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(7, 15), 40, createRandomSeats(108)));
-        flights.add(new Flight(213L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(18, 45), 42, createRandomSeats(108)));
-        flights.add(new Flight(214L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(10, 30), 32, createRandomSeats(108)));
-        flights.add(new Flight(215L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(19, 00), 34, createRandomSeats(108)));
-        flights.add(new Flight(216L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(8, 10), 36, createRandomSeats(108)));
-        flights.add(new Flight(217L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(17, 50), 38, createRandomSeats(108)));
+        flights.add(new Flight(202L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 34, createRandomSeats(108)));
+        flights.add(new Flight(203L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(7, 30), 34, createRandomSeats(108)));
+        flights.add(new Flight(204L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 32, createRandomSeats(108)));
+        flights.add(new Flight(205L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(6, 45), 30, createRandomSeats(108)));
+        flights.add(new Flight(206L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(15, 00), 28, createRandomSeats(108)));
+        flights.add(new Flight(207L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(8, 00), 42, createRandomSeats(108)));
+        flights.add(new Flight(208L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(18, 00), 40, createRandomSeats(108)));
+        flights.add(new Flight(209L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(6, 45), 30, createRandomSeats(108)));
+        flights.add(new Flight(210L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(15, 00), 28, createRandomSeats(108)));
+        flights.add(new Flight(211L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(7, 15), 40, createRandomSeats(108)));
+        flights.add(new Flight(212L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(18, 45), 42, createRandomSeats(108)));
+        flights.add(new Flight(213L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(10, 30), 32, createRandomSeats(108)));
+        flights.add(new Flight(214L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(19, 00), 34, createRandomSeats(108)));
+        flights.add(new Flight(215L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(8, 10), 36, createRandomSeats(108)));
+        flights.add(new Flight(216L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(17, 50), 38, createRandomSeats(108)));
     
     // Debugging: Log the number of total seats and occupied seats
     flights.forEach(flight -> {
