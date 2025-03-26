@@ -73,6 +73,8 @@ public class FlightService {
             boolean isExtraLegroom = (i == 1 || i == 8);
             boolean isNearExit = (i == 1 || i == numSeats / 6);
 
+            System.out.println("Seat data for row " + i + ": Window Seat = " + isWindowSeatA + ", Extra Legroom = " + isExtraLegroom + ", Near Exit = " + isNearExit);
+
             boolean isOccupiedA = occupiedIndexes.contains(seats.size());
             boolean isOccupiedB = occupiedIndexes.contains(seats.size() + 1);
             boolean isOccupiedC = occupiedIndexes.contains(seats.size() + 2);
