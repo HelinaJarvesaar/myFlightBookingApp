@@ -58,7 +58,7 @@ function filterFlights(flights) {
     const filtered = flights.filter(flight =>
         (!destination || flight.destination === destination) &&
         (!date || flight.date === date) &&
-        (!time || flight.time === time) &&
+        (!time || flight.time.slice(0, 5) === time) &&
         (!price || flight.price <= parseFloat(price))
     );
 
@@ -157,12 +157,11 @@ function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set
                 } else {
                     seatEl.className = 'seat available';
 
-                    // Check if seat is in the recommended list
-                    if (recommendedSeatNumbers.has(seatData.seatNumber)) {
-                        console.log("Recommended seats:", recommendedSeatNumbers);
-                        seatEl.classList.add('recommended');
-                    }
-
+                        if (seatData && recommendedSeatNumbers.has(seatData.seatNumber)) {
+                            seatEl.classList.add('recommended');
+                        }
+                        
+                    
                     seatEl.addEventListener('click', () => selectSeat(seatEl, seatData));
                 }
             }
@@ -192,19 +191,17 @@ document.getElementById('applyFilters').addEventListener('click', () => {
 });
 
 function fetchRecommendedSeats(flightId, filters) {
-    const params = new URLSearchParams({
-        windowSeat: filters.windowSeat,
-        extraLegroom: filters.extraLegroom,
-        nearExit: filters.nearExit,
-        numberOfSeats: filters.seatCount
-    });
+    const params = new URLSearchParams();
+
+    if (filters.windowSeat) params.append('windowSeat', true);
+    if (filters.extraLegroom) params.append('extraLegroom', true);
+    if (filters.nearExit) params.append('nearExit', true);
+    params.append('numberOfSeats', filters.seatCount);
 
     return fetch(`/api/flights/${flightId}/seats?` + params.toString())
-    .then(response => response.json())
-    .then(data => {
-        return data;
-    });
+        .then(response => response.json());
 }
+
 
 //viimati lisatud:
 function highlightRecommendedSeats(recommendedSeats) {
