@@ -237,10 +237,11 @@ function selectSeat(el, seatData) {
     }
 }
 
+
 function updateSeatSummary() {
     const selected = [...document.querySelectorAll('.seat.selected')];
     const seatNames = selected.map(s => s.textContent);
-    const totalPrice = selected.length * 10;
+    const totalPrice = selected.length * currentFlight.price;
 
     document.getElementById('seat-summary').textContent = seatNames.length
         ? `Valitud kohad: ${seatNames.join(', ')} | Kokku: ${totalPrice} EUR`
@@ -248,6 +249,7 @@ function updateSeatSummary() {
 
     document.getElementById('confirm-seats').disabled = selected.length === 0;
 }
+
 
 // ========== CONFIRMATION & CLEANUP ==========
 document.getElementById('confirm-seats').addEventListener('click', () => {
