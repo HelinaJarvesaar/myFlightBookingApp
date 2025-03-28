@@ -18,33 +18,39 @@ public class FlightService {
     private Random random = new Random();
 
     public FlightService() {
-        flights.add(new Flight(201L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(7, 40), 36, createRandomSeats(108)));
-        flights.add(new Flight(202L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 34, createRandomSeats(108)));
-        flights.add(new Flight(203L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(7, 30), 34, createRandomSeats(108)));
-        flights.add(new Flight(204L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 32, createRandomSeats(108)));
-        flights.add(new Flight(205L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(6, 45), 30, createRandomSeats(108)));
-        flights.add(new Flight(206L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(15, 00), 28, createRandomSeats(108)));
-        flights.add(new Flight(207L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(8, 00), 42, createRandomSeats(108)));
-        flights.add(new Flight(208L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(18, 00), 40, createRandomSeats(108)));
-        flights.add(new Flight(209L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(6, 45), 30, createRandomSeats(108)));
-        flights.add(new Flight(210L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(15, 00), 28, createRandomSeats(108)));
-        flights.add(new Flight(211L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(7, 15), 40, createRandomSeats(108)));
-        flights.add(new Flight(212L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(18, 45), 42, createRandomSeats(108)));
-        flights.add(new Flight(213L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(10, 30), 32, createRandomSeats(108)));
-        flights.add(new Flight(214L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(19, 00), 34, createRandomSeats(108)));
-        flights.add(new Flight(215L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(8, 10), 36, createRandomSeats(108)));
-        flights.add(new Flight(216L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(17, 50), 38, createRandomSeats(108)));
-    
-    // Debugging: Log the number of total seats and occupied seats
-    flights.forEach(flight -> {
-        List<Seat> seats = flight.getSeats();
-        long totalSeats = seats.size();
-        long occupiedSeats = seats.stream().filter(Seat::isOccupied).count();
-        System.out.println("Flight " + flight.getFlightId() + " (" + flight.getDestination() + ")");
-        System.out.println("Total seats: " + totalSeats);
-        System.out.println("Occupied seats: " + occupiedSeats);
-    });
-    
+        flights.add(new Flight(201L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(7, 40), 36,
+                createRandomSeats(108)));
+        flights.add(new Flight(202L, "Kuressaare", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 34,
+                createRandomSeats(108)));
+        flights.add(
+                new Flight(203L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(7, 30), 34, createRandomSeats(108)));
+        flights.add(
+                new Flight(204L, "Kärdla", LocalDate.of(2025, 4, 4), LocalTime.of(18, 30), 32, createRandomSeats(108)));
+        flights.add(
+                new Flight(205L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(6, 45), 30, createRandomSeats(108)));
+        flights.add(
+                new Flight(206L, "Pärnu", LocalDate.of(2025, 4, 4), LocalTime.of(15, 00), 28, createRandomSeats(108)));
+        flights.add(
+                new Flight(207L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(8, 00), 42, createRandomSeats(108)));
+        flights.add(
+                new Flight(208L, "Tartu", LocalDate.of(2025, 4, 5), LocalTime.of(18, 00), 40, createRandomSeats(108)));
+        flights.add(
+                new Flight(209L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(6, 45), 30, createRandomSeats(108)));
+        flights.add(
+                new Flight(210L, "Pärnu", LocalDate.of(2025, 4, 5), LocalTime.of(15, 00), 28, createRandomSeats(108)));
+        flights.add(
+                new Flight(211L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(7, 15), 40, createRandomSeats(108)));
+        flights.add(
+                new Flight(212L, "Tartu", LocalDate.of(2025, 4, 6), LocalTime.of(18, 45), 42, createRandomSeats(108)));
+        flights.add(
+                new Flight(213L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(10, 30), 32, createRandomSeats(108)));
+        flights.add(
+                new Flight(214L, "Kärdla", LocalDate.of(2025, 4, 6), LocalTime.of(19, 00), 34, createRandomSeats(108)));
+        flights.add(new Flight(215L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(8, 10), 36,
+                createRandomSeats(108)));
+        flights.add(new Flight(216L, "Kuressaare", LocalDate.of(2025, 4, 7), LocalTime.of(17, 50), 38,
+                createRandomSeats(108)));
+
     }
 
     private List<Seat> createRandomSeats(int numSeats) {
@@ -73,8 +79,6 @@ public class FlightService {
             boolean isExtraLegroom = (i == 1 || i == 8);
             boolean isNearExit = (i == 1 || i == numSeats / 6);
 
-            System.out.println("Seat data for row " + i + ": Window Seat = " + isWindowSeatA + ", Extra Legroom = " + isExtraLegroom + ", Near Exit = " + isNearExit);
-
             boolean isOccupiedA = occupiedIndexes.contains(seats.size());
             boolean isOccupiedB = occupiedIndexes.contains(seats.size() + 1);
             boolean isOccupiedC = occupiedIndexes.contains(seats.size() + 2);
@@ -93,7 +97,8 @@ public class FlightService {
         return seats;
     }
 
-    public List<Flight> filterFlights(Long flightId, String destination, LocalDate date, LocalTime time, Double maxPrice) {
+    public List<Flight> filterFlights(Long flightId, String destination, LocalDate date, LocalTime time,
+            Double maxPrice) {
         return flights.stream()
                 .filter(f -> flightId == null || f.getFlightId().equals(flightId))
                 .filter(f -> destination == null || f.getDestination().equalsIgnoreCase(destination))
@@ -135,8 +140,8 @@ public class FlightService {
 
             if (!adjacentSeatsGroups.isEmpty()) {
                 return adjacentSeatsGroups.get(0).stream()
-                .limit(numberOfSeats)  
-                .collect(Collectors.toList());
+                        .limit(numberOfSeats)
+                        .collect(Collectors.toList());
             } else {
                 return availableSeats.stream()
                         .limit(numberOfSeats)

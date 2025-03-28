@@ -19,7 +19,6 @@ fetch(`/api/flights`)
     })
     .catch(error => console.error('Error fetching flight data:', error));
 
-
 // ========== FILTERING ==========
 function resetForm() {
     document.getElementById('flight-filter-form').reset();
@@ -63,29 +62,7 @@ function filterFlights(flights) {
     );
 
     displayFlights(filtered);
-}
-
-// ========== DISPLAY FLIGHTS ==========
-function displayFlights(flights) {
-    const flightListDiv = document.getElementById('flight-list');
-    flightListDiv.innerHTML = '';
-
-    flights.forEach(flight => {
-        const time = new Date(`1970-01-01T${flight.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-        const box = document.createElement('div');
-        box.classList.add('flight-box');
-        box.innerHTML = `
-            <p>${formatEstonianDate(flight.date)}</p>
-            <h3>${flight.destination}</h3>
-            <p>Lend nr: ${flight.flightId}</p>
-            <p>${time}</p>
-            <p>${flight.price} EUR</p>
-        `;
-
-        box.addEventListener('click', () => openFlightModal(flight));
-        flightListDiv.appendChild(box);
-    });
+    displayFlightTimesForFilter(flights);
 }
 
 function formatEstonianDate(dateStr) {
@@ -96,6 +73,65 @@ function formatEstonianDate(dateStr) {
     return `${days[date.getDay()]} ${day}.${month}`;
 }
 
+// ========== DISPLAY FLIGHTS ==========
+function displayFlights(flights) {
+    const flightListDiv = document.getElementById('flight-list');
+    flightListDiv.innerHTML = '';
+
+    flights.sort((a, b) => {
+        const dateTimeA = new Date(`${a.date}T${a.time}`);
+        const dateTimeB = new Date(`${b.date}T${b.time}`);
+        return dateTimeA - dateTimeB;
+    });
+
+    flights.forEach(flight => {
+        const time = new Date(`1970-01-01T${flight.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        const box = document.createElement('div');
+        box.classList.add('flight-box');
+        box.innerHTML = `
+          <div>
+            <h3>${flight.destination}</h3>
+          </div>
+          <div>
+            <p>${formatEstonianDate(flight.date)}</p>
+          </div>
+          <div>
+            <p>${time}</p>
+          </div>
+          <div class="flight-price">
+            ${flight.price} EUR
+          </div>
+          <div class="flight-number">
+            <p>Lend nr ${flight.flightId}</p>
+          </div>
+        `;
+
+        box.addEventListener('click', () => openFlightModal(flight));
+        flightListDiv.appendChild(box);
+    });
+
+    displayFlightTimesForFilter(flights);
+}
+
+function displayFlightTimesForFilter(flights) {
+    const timesDatalistElement = document.getElementById('times');
+
+    const uniqueTimes = new Set(flights.map(flight => {
+        const formattedTime = new Date(`1970-01-01T${flight.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        return formattedTime;
+    }));
+
+    const sortedTimes = [...uniqueTimes].sort();
+    timesDatalistElement.innerHTML = '';
+
+    sortedTimes.forEach(time => {
+        const option = document.createElement('option');
+        option.value = time;
+        timesDatalistElement.appendChild(option);
+    });
+}
+
 // ========== OPEN MODAL ==========
 function openFlightModal(flight) {
     const modal = document.getElementById('seatModal');
@@ -103,18 +139,18 @@ function openFlightModal(flight) {
     currentFlight = flight;
 
     details.innerHTML = `
-        <p><strong>Flight Number:</strong> ${flight.flightId}</p>
-        <p><strong>Destination:</strong> ${flight.destination}</p>
-        <p><strong>Date:</strong> ${formatEstonianDate(flight.date)}</p>
-        <p><strong>Time:</strong> ${new Date(`1970-01-01T${flight.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-        <p><strong>Price:</strong> ${flight.price} EUR</p>
+        <p><strong>Lend nr:</strong> ${flight.flightId}</p>
+        <p><strong>Sihtkoht:</strong> ${flight.destination}</p>
+        <p><strong>Kuupäev:</strong> ${formatEstonianDate(flight.date)}</p>
+        <p><strong>Väljumisaeg:</strong> ${new Date(`1970-01-01T${flight.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+        <p><strong>Hind:</strong> ${flight.price} EUR</p>
     `;
 
     generateSeatMap(flight.seats);
     modal.style.display = 'block';
 
     document.getElementById("applyFilters").addEventListener('click', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         const filters = {
             windowSeat: document.getElementById('windowSeat').checked,
             extraLegroom: document.getElementById('extraLegroom').checked,
@@ -131,7 +167,6 @@ function openFlightModal(flight) {
     });
 }
 
-
 // ========== SEAT MAP ==========
 function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set(), rows = 18) {
     const seatMap = document.getElementById('seat-map');
@@ -141,7 +176,7 @@ function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set
     seatMap.style.gap = '10px';
 
     for (let i = 1; i <= rows; i++) {
-       
+
         ['A', 'B', 'C', 'aisle', 'D', 'E', 'F'].forEach(letter => {
             const seatId = letter === 'aisle' ? null : `${letter}${i}`;
             const seatEl = document.createElement('div');
@@ -157,11 +192,9 @@ function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set
                 } else {
                     seatEl.className = 'seat available';
 
-                        if (seatData && recommendedSeatNumbers.has(seatData.seatNumber)) {
-                            seatEl.classList.add('recommended');
-                        }
-                        
-                    
+                    if (seatData && recommendedSeatNumbers.has(seatData.seatNumber)) {
+                        seatEl.classList.add('recommended');
+                    }
                     seatEl.addEventListener('click', () => selectSeat(seatEl, seatData));
                 }
             }
@@ -179,7 +212,6 @@ document.getElementById('applyFilters').addEventListener('click', () => {
         nearExit: document.getElementById('nearExit').checked,
         seatCount: parseInt(document.getElementById('seatCount').value)
     };
-    console.log("Filters applied:", filters); 
 
     if (currentFlight) {
         fetchRecommendedSeats(currentFlight.flightId, filters).then(recommendedSeats => {
@@ -202,24 +234,6 @@ function fetchRecommendedSeats(flightId, filters) {
         .then(response => response.json());
 }
 
-
-//viimati lisatud:
-function highlightRecommendedSeats(recommendedSeats) {
-    const seatElements = document.querySelectorAll(".seat.available");
-
-    seatElements.forEach(seat => {
-        const seatNumber = seat.textContent.trim();
-        const isRecommended = recommendedSeats.some(s => s.seatNumber === seatNumber);
-
-        seat.classList.remove("recommended");
-
-        if (isRecommended) {
-            seat.classList.add("recommended");
-        }
-    });
-}
-
-
 function selectSeat(el, seatData) {
     if (el.classList.contains('available') || el.classList.contains('recommended')) {
         if (el.classList.contains('selected')) {
@@ -227,16 +241,12 @@ function selectSeat(el, seatData) {
         } else {
             el.classList.add('selected');
         }
-
-        // Remove yellow highlighting once selected
         if (el.classList.contains('selected')) {
             el.classList.remove('recommended');
         }
-
         updateSeatSummary();
     }
 }
-
 
 function updateSeatSummary() {
     const selected = [...document.querySelectorAll('.seat.selected')];
@@ -249,7 +259,6 @@ function updateSeatSummary() {
 
     document.getElementById('confirm-seats').disabled = selected.length === 0;
 }
-
 
 // ========== CONFIRMATION & CLEANUP ==========
 document.getElementById('confirm-seats').addEventListener('click', () => {
@@ -273,3 +282,7 @@ function clearSelectedSeats() {
     document.getElementById('seat-summary').textContent = 'Valitud kohad: -';
     document.getElementById('confirm-seats').disabled = true;
 }
+
+document.getElementById('all-flights').addEventListener('click', () => {
+    document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
+});

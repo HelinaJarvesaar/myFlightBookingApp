@@ -13,23 +13,23 @@
     <div class="container">
 
         <div class="header">
-            <h1>Tule, lenda koos meiega!</h1>
-            <button id="all-flights">Väljuvad lennud</button>
+
+            <h1>Tule, lenda Eestis koos meiega!</h1>
+            <button id="all-flights">Vaata lende</button>
         </div>
 
         <div class="main">
-
+            <div id="flights">
+                <h2>Tallinnast väljuvad lennud</h2>
+            </div>
             <div id="flights-filter">
-                <h2>Filtreeri väljuvaid lende:</h2>
+                <h3>Filtreeri:</h3>
 
-                <!-- Flight Filters Form -->
                 <form id="flight-filter-form">
                     <div class="filter-group">
                         <label for="destination">Sihtkoht:</label>
                         <input list="destinations" id="destination" name="destination" placeholder="Vali sihtkoht">
-                        <datalist id="destinations">
-                            <!-- Options for destination will be populated from the flight data -->
-                        </datalist>
+                        <datalist id="destinations"></datalist>
                     </div>
 
                     <div class="filter-group">
@@ -38,11 +38,9 @@
                     </div>
 
                     <div class="filter-group">
-                        <label for="time">Kellaaeg:</label>
+                        <label for="time">Väljumisaeg:</label>
                         <input list="times" id="time" name="time" placeholder="Vali kellaaeg">
-                        <datalist id="times">
-                            <!-- Options for time will be populated from the flight data -->
-                        </datalist>
+                        <datalist id="times"></datalist>
                     </div>
 
                     <div class="filter-group">
@@ -58,12 +56,8 @@
             </div>
 
 
-            <div id="flight-list">
-                <!-- Flight information will be injected here -->
-            </div>
+            <div id="flight-list"></div>
 
-
-            <!--Modal for displaying flight details and seat map-->
             <div id="seatModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -87,7 +81,7 @@
                         <button id="applyFilters">Rakenda</button>
                     </form>
 
-                    <h3>Istekohad</h3>
+                    <h3>Vali istekohad</h3>
                     <div id="seat-map-container">
                         <div class="exit-label top">VÄLJAPÄÄS</div>
                         <div id="seat-map"></div>
@@ -101,15 +95,14 @@
 
                     <div id="custom-alert" style="display: none; margin-top: 20px; text-align: center;">
                         <p style="margin-bottom: 10px;">
-                          Täname, et lendate koos meiega!<br>
-                          Head reisi!
+                            Täname, et lendate koos meiega!<br>
+                            Head reisi!
                         </p>
                         <button id="close-alert">SULGE</button>
-                      </div>
-
-
+                    </div>
                 </div>
             </div>
+
 
         </div>
 
