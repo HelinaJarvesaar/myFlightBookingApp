@@ -99,11 +99,11 @@ function displayFlights(flights) {
           <div>
             <p>${time}</p>
           </div>
-          <div class="flight-price">
-            ${flight.price} EUR
-          </div>
           <div class="flight-number">
             <p>Lend nr ${flight.flightId}</p>
+          </div>
+          <div class="flight-price">
+            ${flight.price} EUR
           </div>
         `;
 
@@ -171,12 +171,16 @@ function openFlightModal(flight) {
 function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set(), rows = 18) {
     const seatMap = document.getElementById('seat-map');
     seatMap.innerHTML = '';
-    seatMap.style.display = 'grid';
-    seatMap.style.gridTemplateColumns = 'repeat(3, 40px) 20px repeat(3, 40px)';
-    seatMap.style.gap = '10px';
 
     for (let i = 1; i <= rows; i++) {
 
+        if (i === 8) {
+            const spacer = document.createElement('div');
+            spacer.className = 'row-spacer';
+            spacer.style.gridColumn = '1 / -1'; // Span the whole row
+            seatMap.appendChild(spacer);
+        }
+        
         ['A', 'B', 'C', 'aisle', 'D', 'E', 'F'].forEach(letter => {
             const seatId = letter === 'aisle' ? null : `${letter}${i}`;
             const seatEl = document.createElement('div');
