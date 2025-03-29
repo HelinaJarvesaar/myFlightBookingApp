@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flight Booking App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>Tule, lenda Eestis koos meiega!</h1>
+            <button id="all-flights">Vaata lende</button>
+        </div>
+
+        <div class="main">
+            <div id="flights">
+                <h2>Tallinnast väljuvad lennud</h2>
+            </div>
+            <div id="flights-filter">
+                <h3>Filtreeri:</h3>
+
+                <form id="flight-filter-form">
+                    <div class="filter-group">
+                        <label for="destination">Sihtkoht:</label>
+                        <input list="destinations" id="destination" name="destination" placeholder="Vali sihtkoht">
+                        <datalist id="destinations"></datalist>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="date">Kuupäev:</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="time">Väljumisaeg:</label>
+                        <input list="times" id="time" name="time" placeholder="Vali kellaaeg">
+                        <datalist id="times"></datalist>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="price">Hind kuni:</label>
+                        <input type="number" id="price" name="price" placeholder="Vali hind">
+
+                    </div>
+
+                    <div class="filter-group">
+                        <button type="submit">Rakenda / Lähtesta</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="flight-list"></div>
+
+            <div id="seatModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Valitud lend</h2>
+                    <div id="flight-details"></div>
+
+                    <div id="seats-filter">
+                        <h3>Vali istekohad:</h3>
+
+                        <form id="seat-filter-form">
+                            <div class="seat-options">
+                                <label for="windowSeat">Istekoht akna all
+                                    <input type="checkbox" id="windowSeat">
+                                </label>
+
+                                <label for="extraLegroom">Rohkem jalaruumi
+                                    <input type="checkbox" id="extraLegroom">
+                                </label>
+
+                                <label for="nearExit">Väljapääsu lähedal
+                                    <input type="checkbox" id="nearExit">
+                                </label>
+
+                                <label for="seatCount">Istekohad kõrvuti
+                                    <input type="number" id="seatCount" value="1" min="1">
+                                </label>
+
+                                <button id="applyFilters">Rakenda</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div id="seat-map-container">
+                        <div id="seat-map"></div>
+                    </div>
+
+                    <div id="seat-summary-container">
+                        <p id="seat-summary">Valitud kohad: -</p>
+                        <button id="confirm-seats" disabled>Kinnita valik</button>
+                    </div>
+
+                    <div id="custom-alert">
+                        <div id="alert-text">
+                            <p>
+                                Täname, et lendad koos meiega!<br>
+                                Soovime meeldivat reisi!
+                            </p>
+                        </div>
+                        <button id="close-alert">Sulge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&#169; 2025, FlightBooking</p>
+        </footer>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
