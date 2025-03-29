@@ -177,7 +177,7 @@ function generateSeatMap(seats, filters = null, recommendedSeatNumbers = new Set
         if (i === 8) {
             const spacer = document.createElement('div');
             spacer.className = 'row-spacer';
-            spacer.style.gridColumn = '1 / -1'; // Span the whole row
+            spacer.style.gridColumn = '1 / -1';
             seatMap.appendChild(spacer);
         }
         
@@ -220,7 +220,7 @@ document.getElementById('applyFilters').addEventListener('click', () => {
     if (currentFlight) {
         fetchRecommendedSeats(currentFlight.flightId, filters).then(recommendedSeats => {
             const recommendedSeatNumbers = new Set(recommendedSeats.map(s => s.seatNumber));
-            console.log("Recommended seats:", recommendedSeatNumbers); // Log to check
+            console.log("Recommended seats:", recommendedSeatNumbers);
             generateSeatMap(currentFlight.seats, filters, recommendedSeatNumbers);
         });
     }
@@ -267,17 +267,18 @@ function updateSeatSummary() {
 // ========== CONFIRMATION & CLEANUP ==========
 document.getElementById('confirm-seats').addEventListener('click', () => {
     const selectedSeats = [...document.querySelectorAll('.seat.selected')].map(s => s.textContent);
-    document.getElementById('custom-alert').style.display = 'block';
+    document.getElementById('custom-alert').classList.add('visible');
 });
 
 document.getElementById('close-alert').addEventListener('click', () => {
-    document.getElementById('custom-alert').style.display = 'none';
+    document.getElementById('custom-alert').classList.remove('visible');
     document.getElementById('seatModal').style.display = 'none';
     clearSelectedSeats();
 });
 
 document.querySelector('#seatModal .close').addEventListener('click', () => {
     document.getElementById('seatModal').style.display = 'none';
+    document.getElementById('custom-alert').style.display = 'none';
     clearSelectedSeats();
 });
 
