@@ -277,8 +277,8 @@ document.getElementById('close-alert').addEventListener('click', () => {
 });
 
 document.querySelector('#seatModal .close').addEventListener('click', () => {
+    document.getElementById('custom-alert').classList.remove('visible');
     document.getElementById('seatModal').style.display = 'none';
-    document.getElementById('custom-alert').style.display = 'none';
     clearSelectedSeats();
 });
 
@@ -291,3 +291,5 @@ function clearSelectedSeats() {
 document.getElementById('all-flights').addEventListener('click', () => {
     document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
 });
+
+
