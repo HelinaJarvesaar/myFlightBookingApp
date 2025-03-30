@@ -67,7 +67,7 @@ However, I couldn't resolve the issue where the adjacent seat recommendation doe
 
 3. If a user requests more seats than are available, the program recommends only 1 seat instead of the requested number.
 
-The entire project took about 7 days to complete. I learned that no matter how challenging the problem may seem at first, it's always doable with patience and determination. Every challenge is an opportunity to learn and improve.
+The entire project took about 7 days to complete. I learned that no matter how challenging the problem may seem at first, it's always doable with patience and determination. 
 
 
 ## <a id="future-improvements"></a>🔧 Future Improvements
