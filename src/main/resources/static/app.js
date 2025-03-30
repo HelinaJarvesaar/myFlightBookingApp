@@ -220,7 +220,6 @@ document.getElementById('applyFilters').addEventListener('click', () => {
     if (currentFlight) {
         fetchRecommendedSeats(currentFlight.flightId, filters).then(recommendedSeats => {
             const recommendedSeatNumbers = new Set(recommendedSeats.map(s => s.seatNumber));
-            console.log("Recommended seats:", recommendedSeatNumbers);
             generateSeatMap(currentFlight.seats, filters, recommendedSeatNumbers);
         });
     }
