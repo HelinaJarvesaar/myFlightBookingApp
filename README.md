@@ -23,10 +23,13 @@ It provides an intuitive interface for booking flights.
 - **Version Control**: Git, GitHub
 
 ## <a id="steps-to-run-the-backend"></a> 🚀 Steps to Run the Backend
-1. Clone the Repository: Download or clone the repository with the project files.
-2. Set up the Backend API: Ensure that the backend API (providing flight data and recommended seat data) is running and accessible.
-3. Run the Application:
-4. Open the http://localhost:8080/index.html file in a web browser to view the application.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/HelinaJarvesaar/myFlightBookingApp.git
+    ```
+2. Set Up the Backend API: Ensure that the backend API (which provides flight data and recommended seat data) is running and accessible.
+3. Run the Application: Open http://localhost:8080/index.html in your web browser to view and interact with the application.
+
 
 ## <a id="main-features"></a> ✨ Main Features
 - **Flight Search and Filtering**: Allows the user to filter flights based on destination, date, time, and price.
