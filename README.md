@@ -12,7 +12,7 @@
 
    
 ## <a id="introduction"></a>💡 Introduction
-This is a **Flight Booking Web Application** that allows users to search for flights, view detailed flight information, 
+This is a Flight Booking Application that allows users to search for flights, view detailed flight information, 
 filter flights based on preferences (such as destination, date, time, and price), and select seats in a flight. 
 It provides an intuitive interface for booking flights.
 
@@ -29,6 +29,12 @@ It provides an intuitive interface for booking flights.
     ```
 2. Set Up the Backend API: Ensure that the backend API (which provides flight data and recommended seat data) is running and accessible.
 3. Run the Application: Open http://localhost:8080/index.html in your web browser to view and interact with the application.
+
+**Key endpoint:**
+
+- `GET /api/flights`: Returns all available flights.
+
+- `GET /api/flights/{flightId}/seats`: Returns seat availability for a given flight.
 
 
 ## <a id="main-features"></a> ✨ Main Features
