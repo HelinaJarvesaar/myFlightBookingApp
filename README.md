@@ -27,7 +27,7 @@ It provides an intuitive interface for booking flights.
 3. Run the Application:
 4. Open the http://localhost:8080/index.html file in a web browser to view the application.
 
-## ✨ Main Features
+## Main Features
 - **Flight Search and Filtering**: Allows the user to filter flights based on destination, date, time, and price.
 - **Flight Details and Seat Selection**: Displays flight details and provides an interactive seat map for users to choose their seats.
 - **Filters for Seat Preferences**: Users can filter available seats by preferences such as window seats, extra legroom, or proximity to an exit.
