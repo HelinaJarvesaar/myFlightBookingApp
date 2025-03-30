@@ -10,18 +10,18 @@
 7. [Future Improvements](#future-improvements)
 
    
-## 💡 Introduction
+## <a id="introduction"></a>💡 Introduction
 This is a **Flight Booking Web Application** that allows users to search for flights, view detailed flight information, 
 filter flights based on preferences (such as destination, date, time, and price), and select seats in a flight. 
 It provides an intuitive interface for booking flights.
 
-## ⚙️ Technologies Used
+## <a id="technologies-used"></a> ⚙️ Technologies Used
 - **Backend**: Spring Boot (Java)
 - **Frontend**: HTML, CSS, JavaScript
 - **Database**: In-memory mock data (no database connection)
 - **Version Control**: Git, GitHub
 
-## 🚀 Steps to Run the Backend
+## <a id="steps-to-run-the-backend"></a>🚀 Steps to Run the Backend
 1. Clone the Repository: Download or clone the repository with the project files.
 2. Set up the Backend API: Ensure that the backend API (providing flight data and recommended seat data) is running and accessible.
 3. Run the Application:
