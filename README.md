@@ -23,12 +23,12 @@ It provides an intuitive interface for booking flights.
 - **Version Control**: Git, GitHub
 
 ## <a id="steps-to-run-the-backend"></a> 🚀 Steps to Run the Backend
-1. Clone the repository:
-    ```bash
+1. ```bash
     git clone https://github.com/HelinaJarvesaar/myFlightBookingApp.git
     ```
-2. Set Up the Backend API: Ensure that the backend API (which provides flight data and recommended seat data) is running and accessible.
-3. Run the Application: Open http://localhost:8080/index.html in your web browser to view and interact with the application.
+2. ```bash
+   mvn spring-boot:run
+   ```
 
 **Key endpoint:**
 
