@@ -85,6 +85,8 @@ The entire project took about 7 days to complete. I learned that no matter how c
 - **User Roles** – Introduce authentication and role-based access (e.g., admin, passenger).
 - **Seat Persistence** – Save seat reservations to the database.
 - **Validation & Errors** – Improve input validation and user-friendly error handling.
+___ 
+- **If I redesign this project:** - I would focus on improving the visual UI with a Figma prototype first and then rebuild the front-end with a design system in mind.
 
 
 ## <a id="screenshots"></a> Screenshots
