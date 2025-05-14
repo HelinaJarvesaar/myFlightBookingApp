@@ -1,4 +1,5 @@
 # **Flight Booking Application** 🛫
+# Full-Stack UX Flow Prototype (Personal Project)
 
 ## Table of Contents
 1. [Introduction](#introduction)
