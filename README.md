@@ -9,8 +9,7 @@
 5. [Key Functions Explained](#key-functions-explained)
 6. [Challenges and Learning](#challenges-and-learning)
 7. [Future Improvements](#future-improvements)
-8. [If Redesign Project](#redesign-project)
-9. [Screenshots](#screenshots)
+8. [Screenshots](#screenshots)
 
    
 ## <a id="introduction"></a>💡 Introduction
@@ -86,10 +85,7 @@ The entire project took about 7 days to complete. I learned that no matter how c
 - **User Roles** – Introduce authentication and role-based access (e.g., admin, passenger).
 - **Seat Persistence** – Save seat reservations to the database.
 - **Validation & Errors** – Improve input validation and user-friendly error handling.
-___ 
-## <a id="redesign-project"></a>👩‍💻 If I redesign this project:
-
-- I would focus on improving the visual UI with a Figma prototype first and then rebuild the front-end with a design system in mind.
+- If I'd redesign this project I would focus on improving the visual UI with a Figma prototype first.
 
 
 ## <a id="screenshots"></a> Screenshots
